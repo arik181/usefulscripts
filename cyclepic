@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+### Cycle through all images
+files=(/home/arik181/Images/*)
+curindex=`< /home/arik181/bin/curpic`
+fin=0
+
+i=1
+for f in $files 
+do
+    if [ $i -eq "1" ]
+    then
+        firstfile=$f
+    fi
+    if [ $i -eq ${#files[@]} ]
+    then
+        file=$firstfile
+        index=1
+        break
+    fi
+    if [ $fin -eq 1 ]
+    then
+        file=$f
+        index=$i
+        break
+    fi
+    if [ $i -eq $curindex ]
+    then
+        fin=1
+    fi
+    let "i += 1"
+done
+echo $index > /home/arik181/bin/curpic
+feh --bg-fill $file

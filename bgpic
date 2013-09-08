@@ -1,3 +1,9 @@
 #!/usr/bin/env zsh
+#files=(/home/arik181/Images/*)
+#feh --bg-fill ${files[RANDOM % ${#files[@]}]}
+
 files=(/home/arik181/Images/*)
-feh --bg-fill ${files[RANDOM % ${#files[@]}]}
+R=$(($RANDOM % ${#files[@]}))
+echo $R > /home/arik181/bin/curpic
+CURPIC=${files[$R]}
+feh --bg-fill ${CURPIC}
