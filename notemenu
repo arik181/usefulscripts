@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+NOTE=`ls -1 ~/notes/ | dmenu -b -nb darkblue -nf lightblue -sb blue -sf lightblue`
+FILELOCATION="${HOME}/notes/${NOTE}"
+mkdir -p ${HOME}/notes
+if [[ -n $NOTE ]] 
+then
+    TIMESTAMP=`date`
+    STRING="$TIMESTAMP : edited file $FILELOCATION on host $(hostname)"
+    urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb -e vim ${FILELOCATION}
+    echo $STRING >> ${HOME}/notes/notes.log
+    cd ${HOME}/notes
+    git add $FILELOCATION
+    git commit -m $STRING
+    if [[ -n `git show-ref` ]] 
+    then
+        git push
+    fi
+fi
