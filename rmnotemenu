@@ -2,18 +2,18 @@
 NOTEDIR=${HOME}/Git/notes/
 cd $NOTEDIR
 git pull -q
-NOTE=`ls -1 ${NOTEDIR} | dmenu -b -nb darkblue -nf lightblue -sb blue -sf lightblue`
+NOTE=`ls -1 ${NOTEDIR} | dmenu -b -nb darkred -nf pink -sb red -sf pink`
 FILELOCATION="${NOTEDIR}${NOTE}"
 LOGLOCATION="${NOTEDIR}notes.log"
 mkdir -p ${NOTEDIR}
 if [[ -n $NOTE ]] 
 then
     TIMESTAMP=`date`
-    STRING="$TIMESTAMP : edited  file $FILELOCATION on host $(hostname)"
-    urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb -e vim ${FILELOCATION}
+    STRING="$TIMESTAMP : removed file $FILELOCATION from host $(hostname)"
+    urxvt -bg rgba:1500/1000/3000/9999 -fg rgba:9999/cccc/eeee/eeee +sb -e rm -rf ${FILELOCATION}
     echo $STRING >> $LOGLOCATION
     cd $NOTEDIR
-    git add $FILELOCATION
+    git rm --ignore-unmatch --quiet --force $FILELOCATION
     git add $LOGLOCATION
     git commit -m $STRING
     if [[ -n `git show-ref` ]] 
