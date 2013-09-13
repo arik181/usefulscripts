@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 NOTEDIR=${HOME}/Git/notes/
 cd $NOTEDIR
-git pull -q
 NOTE=`ls -1 ${NOTEDIR} | dmenu -b -nb darkblue -nf lightblue -sb blue -sf lightblue`
 FILELOCATION="${NOTEDIR}${NOTE}"
 LOGLOCATION="${NOTEDIR}notes.log"
