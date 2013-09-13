@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-ln -s ~/usefulscripts       ~/bin
+ln -s ~/Git/usefulscripts       ~/bin
