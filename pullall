@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+GITDIR="${HOME}/Git/"
+cd $GITDIR
+for i in $(ls $GITDIR)
+do
+    cd ${GITDIR}${i}
+    git pull -q
+done

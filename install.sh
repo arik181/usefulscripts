@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
 ln -s ~/Git/usefulscripts       ~/bin
-line="5 * * * * ${HOME}/bin/pullnotes"
-(crontab -l; echo $line ) | crontab -
+PULL=${HOME}/bin/pullall
+cronline="5 * * * * ${PULL}"
+shline=$PULL
+(crontab -l; echo $cronline ) | crontab -
+echo $shline >> ${HOME}/.profile
