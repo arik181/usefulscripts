@@ -14,7 +14,7 @@ then
     cd $NOTEDIR
     git rm --ignore-unmatch --quiet --force $FILELOCATION
     git add $LOGLOCATION
-    git commit -m $STRING
+    git commit -am $STRING
     if [[ -n `git show-ref` ]] 
     then
         git push
