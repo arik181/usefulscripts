@@ -1,0 +1,1 @@
+./out | dzen2 -x 0 -w 1680 -h 20 -bg darkred -fg black -p 1 -ta l
